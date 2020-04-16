@@ -34,7 +34,9 @@ for (var i = 0; i < tables.length; i++) {
             columns[key][i3].innerText = "";
 
 
-            // paste the collected content in the first td with solid margin at the same right distance, also add a class following pattern 'class + distance' for easy reference
+            /* paste the collected content in the first td with solid margin at the same right distance, 
+            also add a class following pattern 'class + distance' for easy reference */
+
             if (window.getComputedStyle(columns[key][i3]).borderBottomStyle == "solid") {
                 columns[key][i3].innerText = "";
                 columns[key][i3].innerText = content_colector;
