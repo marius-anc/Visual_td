@@ -44,4 +44,6 @@ jobs:
         run: |
           az pipelines run \
             --name "testgh" \
-            --parameters variable1=value1 variable2=value2
+            --parameters param1=value1 \
+                          param2=value2 \
+                          isTrue=false
