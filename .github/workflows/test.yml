@@ -11,10 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger Azure DevOps Pipeline
-        uses: azure/pipelines@v1.2
+      # - name: Trigger Azure DevOps Pipeline
+      #   uses: azure/pipelines@v1.2
+      #   with:
+      #     azure-devops-project-url: https://dev.azure.com/mariusancutescu/Bosch-assigment
+      #     azure-pipeline-name: testgh
+      #     azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+      #     azure-pipeline-variables:  '{"variable1": "value1", "variable2": "value2"}' # optional stringified json
+
+      - name: Azure CLI Login
+        uses: azure/login@v1
         with:
-          azure-devops-project-url: https://dev.azure.com/mariusancutescu/Bosch-assigment
-          azure-pipeline-name: testgh
-          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-          azure-pipeline-variables:  '{"variable1": "value1", "variable2": "value2"}' # optional stringified json
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Install Azure DevOps Extension
+        run: az extension add --name azure-devops
+
+      - name: Trigger Azure DevOps Pipeline
+        run: |
+          az pipelines run \
+            --name "testgh" \
+            --organization "https://dev.azure.com/mariusancutescu" \
+            --project "Bosch-assigment" \
+            --parameters variable1=value1 variable2=value2
