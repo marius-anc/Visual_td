@@ -12,9 +12,9 @@ jobs:
 
     steps:
       - name: Trigger Azure DevOps Pipeline
-        uses: azure/pipelines@v1
+        uses: azure/pipelines@v1.2
         with:
           azure-devops-project-url: https://dev.azure.com/mariusancutescu/Bosch-assigment
           azure-pipeline-name: testgh
           azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-          azure-pipeline-variables: '{ "str": "dexample" }'
+          azure-pipeline-variables:  '{"variable1": "value1", "variable2": "value2"}' # optional stringified json
