@@ -18,4 +18,4 @@ jobs:
           azure-pipeline-name: testgh
           azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
           azure-pipeline-variables: |
-            {"str": "din github"}
+            {'str': 'din github'}
