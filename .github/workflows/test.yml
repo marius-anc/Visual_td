@@ -17,4 +17,5 @@ jobs:
           azure-devops-project-url: https://dev.azure.com/mariusancutescu/Bosch-assigment
           azure-pipeline-name: testgh
           azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-          # azure-pipeline-variables: '{"isTrue": "true", "str": "str"}'
+          azure-pipeline-variables: |
+            {"isTrue": "true", "str": "str"}
