@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Trigger Azure DevOps Pipeline
-        uses: azure/pipelines@v1.2
+        uses: azure/pipelines@v1
         with:
           azure-devops-project-url: https://dev.azure.com/mariusancutescu/Bosch-assigment
           azure-pipeline-name: testgh
