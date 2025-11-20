@@ -1,5 +1,9 @@
 name: Trigger Azure DevOps Pipeline
 
+permissions:
+  id-token: write
+  contents: read
+
 on:
   push:
     branches:
