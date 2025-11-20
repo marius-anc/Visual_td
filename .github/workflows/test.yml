@@ -34,16 +34,24 @@ jobs:
       #       --organization "https://dev.azure.com/mariusancutescu" \
       #       --project "Bosch-assigment" \
       #       --parameters variable1=value1 variable2=value2
+      - name: az login
+        uses: azure/cli@v2
+        with: 
+          creds: ${{ secrets.AZCREDS}}
+      - name: Get ADO token
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            ACCESS_TOKEN=$(az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv)
+            echo "AZURE_DEVOPS_EXT_PAT=$ACCESS_TOKEN" >> $GITHUB_ENV
 
+      
       - name: Configure Azure DevOps Authentication
         run: |
           az devops configure --defaults organization=https://dev.azure.com/mariusancutescu project=Bosch-assigment
-          echo ${{ secrets.AZURE_DEVOPS_TOKEN }} | az devops login
-
-      - name: Trigger Azure DevOps Pipeline
-        run: |
           az pipelines run \
             --name "testgh" \
             --parameters param1=value1 \
                           param2=value2 \
                           isTrue=false
+
